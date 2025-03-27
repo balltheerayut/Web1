@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Box, Typography, Button, Grid } from "@mui/material";
+import React from "react";
+import { Box, Typography, Grid } from "@mui/material";
 import myImage from "../assets/B.jpg"; // ใส่รูป B.jpg
 
 // นำเข้ารูปภาพสำหรับทักษะต่าง ๆ
@@ -14,18 +14,14 @@ import sonyVegasLogo from "../assets/sv.jpg";
 import oiaGif from "../assets/oia.gif";
 import oiaSound from "../assets/oiaa.mp3";
 
+// นำเข้าไฟล์ PDF
+import CV from "../assets/re.pdf";
+import Transcript from "../assets/trs.pdf";
+
 const About = () => {
-  const [audio] = useState(new Audio(oiaSound)); // สร้าง Audio object
-  const openResume = () => {
-    window.open(require("../assets/re.pdf"), "_blank");
-  };
-
-  const openTranscript = () => {
-    window.open(require("../assets/trs.pdf"), "_blank");
-  };
-
   // ฟังก์ชันสำหรับเล่นเสียง
   const playSound = () => {
+    const audio = new Audio(oiaSound);
     audio.play();
   };
 
@@ -33,12 +29,12 @@ const About = () => {
     <Box
       sx={{
         display: "flex",
-        flexDirection: "column", // ให้เนื้อหาเรียงกันในแนวตั้ง
-        alignItems: "flex-start",  // จัดให้อยู่ชิดขวา
-        justifyContent: "center", // จัดให้อยู่กลางในแนวตั้ง
-        height: "100vh",         // ให้สูงเต็มหน้าจอ
-        textAlign: "left",       // ข้อความจะจัดชิดซ้าย
-        paddingLeft: "800px",     // เพิ่ม padding ด้านซ้ายให้รูปและข้อความเลื่อนขวา
+        flexDirection: "column",
+        alignItems: "flex-start",
+        justifyContent: "center",
+        height: "100vh",
+        textAlign: "left",
+        paddingLeft: "800px",
       }}
     >
       {/* รูปภาพ */}
@@ -50,39 +46,27 @@ const About = () => {
           height: "300px",
           borderRadius: "20px",
           objectFit: "cover",
-          marginBottom: "20px", // เพิ่ม margin เพื่อให้รูปห่างจากปุ่ม
+          marginBottom: "20px",
         }}
       />
 
       {/* ปุ่มสำหรับเปิด PDF */}
       <Box sx={{ mt: 3, display: "flex", justifyContent: "center", gap: 2 }}>
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: "orange",
-            color: "#fff",
-            fontSize: "1rem",
-            width: "150px", // กำหนดขนาดให้ปุ่มเท่ากัน
-            "&:hover": { backgroundColor: "#ff9800" },
-          }}
-          onClick={openResume}
-        >
-          Resume
-        </Button>
+        <a href={CV} target="_blank" rel="noopener noreferrer">
+          <button className="bg-gradient-to-r from-blue-400 to-green-500 md:inline text-white px-4 py-2
+            focus:outline-none hover:bg-blue-400 hover:shadow-[0_0_40px_rgb(96,165,250,0.9)]
+            rounded-full text-lg">
+            View CV
+          </button>
+        </a>
 
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: "#2196f3",
-            color: "#fff",
-            fontSize: "1rem",
-            width: "150px", // กำหนดขนาดให้ปุ่มเท่ากัน
-            "&:hover": { backgroundColor: "#1976d2" },
-          }}
-          onClick={openTranscript}
-        >
-          Transcript
-        </Button>
+        <a href={Transcript} target="_blank" rel="noopener noreferrer">
+          <button className="bg-gradient-to-r from-purple-400 to-red-500 md:inline text-white px-4 py-2
+            focus:outline-none hover:bg-purple-400 hover:shadow-[0_0_40px_rgb(192,132,252,0.9)]
+            rounded-full text-lg">
+            View Transcript
+          </button>
+        </a>
       </Box>
 
       {/* ข้อความใต้ปุ่ม */}
@@ -120,7 +104,7 @@ const About = () => {
           right: "20px",
           cursor: "pointer",
         }}
-        onClick={playSound} // คลิกที่ GIF เพื่อเล่นเสียง
+        onClick={playSound}
       >
         <img src={oiaGif} alt="OIA GIF" style={{ width: "150px", height: "150px" }} />
       </Box>
