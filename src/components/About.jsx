@@ -56,7 +56,7 @@ const About = () => {
           <button className="bg-gradient-to-r from-blue-400 to-green-500 md:inline text-white px-4 py-2
             focus:outline-none hover:bg-blue-400 hover:shadow-[0_0_40px_rgb(96,165,250,0.9)]
             rounded-full text-lg">
-            View CV
+            Resume
           </button>
         </a>
 
@@ -64,7 +64,7 @@ const About = () => {
           <button className="bg-gradient-to-r from-purple-400 to-red-500 md:inline text-white px-4 py-2
             focus:outline-none hover:bg-purple-400 hover:shadow-[0_0_40px_rgb(192,132,252,0.9)]
             rounded-full text-lg">
-            View Transcript
+            Transcript
           </button>
         </a>
       </Box>
